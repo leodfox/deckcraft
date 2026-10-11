@@ -438,7 +438,9 @@ impl SlideApp {
                 Err(e) => self.set_status(e.to_string()),
             }
         } else {
-            self.save_as_dialog("deckcraft");
+            // A presentation opened from a .pptx is saved back as .pptx; Save As still offers .deckcraft.
+            let format = self.session.active().and_then(|d| d.save_format).unwrap_or("deckcraft");
+            self.save_as_dialog(format);
         }
     }
 

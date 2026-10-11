@@ -100,7 +100,11 @@ fn open_bytes(s: &mut Session, p: &Value) -> Result<Value> {
     let name = str_param(p, "name").unwrap_or("Presentation");
     let data = str_param(p, "data").and_then(base64_decode).ok_or_else(|| bad("file.openBytes", "missing or invalid base64 `data`"))?;
     let doc = open_presentation(name, &data)?;
+    let pptx = deckcraft_pptx::sniff(&data);
     let i = add_opened(s, name, None, doc);
+    if pptx {
+        s.doc_mut()?.save_format = Some("pptx");
+    }
     Ok(json!({"document": i}))
 }
 

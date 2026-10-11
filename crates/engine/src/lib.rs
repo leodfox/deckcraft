@@ -141,6 +141,8 @@ pub struct DocState {
     pub interaction: Option<Interaction>,
     pub uid: u64,
     pub title: String,
+    /// Format Save writes when there is no path (the browser): "pptx" for a document opened from a .pptx.
+    pub save_format: Option<&'static str>,
 }
 
 static NEXT_UID: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(1);
@@ -158,6 +160,7 @@ impl DocState {
             interaction: None,
             uid: NEXT_UID.fetch_add(1, std::sync::atomic::Ordering::Relaxed),
             title,
+            save_format: None,
         }
     }
     pub fn is_dirty(&self) -> bool {
