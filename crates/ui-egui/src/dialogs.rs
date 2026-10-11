@@ -43,7 +43,7 @@ fn title(id: &str) -> &'static str {
         "renameShape" => "Rename",
         "renameLayout" => "Rename Layout",
         "paragraph" => "Paragraph",
-        "about" => "About DeckCraft",
+        "about" => "About Ardoise Diapo",
         "preferences" => "Preferences",
         "export" => "Export",
         "symbol" => "Symbol",
@@ -55,8 +55,8 @@ fn title(id: &str) -> &'static str {
         "chartData" => "Chart Data",
         "trim" => "Trim Media",
         "smartart" => "Choose a SmartArt Graphic",
-        "quit" => "DeckCraft",
-        _ => "DeckCraft",
+        "quit" => "Ardoise Diapo",
+        _ => "Ardoise Diapo",
     }
 }
 
@@ -789,7 +789,7 @@ fn pretty_equation(s: &str) -> String {
 pub fn about(_app: &mut SlideApp, ui: &mut Ui) {
     let t = Tokens::get(ui.ctx());
     ui.vertical_centered(|ui| {
-        ui.label(egui::RichText::new("Ardoise — Présentation").font(theme::bold(22.0)));
+        ui.label(egui::RichText::new("Ardoise Diapo").font(theme::bold(22.0)));
         ui.label(egui::RichText::new(version_line()).color(t.text_dim));
         ui.add_space(6.0);
         ui.label("Éditeur de présentations Ardoise — basé sur DeckCraft (Apache-2.0).");
@@ -814,7 +814,7 @@ pub fn version_line() -> String {
     s
 }
 
-/// DeckCraft's mark, drawn in code: a slide card with a play triangle in our orange.
+/// Ardoise Diapo's mark, drawn in code: a slide card with a play triangle in our orange.
 pub fn paint_logo(p: &egui::Painter, r: Rect) {
     let orange = Color32::from_rgb(0xF2, 0x6B, 0x1D);
     let deep = Color32::from_rgb(0xC2, 0x4E, 0x14);
@@ -839,7 +839,7 @@ pub fn start_screen(app: &mut SlideApp, ui: &mut Ui) {
             ui.add_space(40.0);
             let (r, _) = ui.allocate_exact_size(vec2(40.0, 40.0), Sense::hover());
             paint_logo(ui.painter(), r);
-            ui.label(egui::RichText::new("DeckCraft").font(theme::bold(26.0)));
+            ui.label(egui::RichText::new("Ardoise Diapo").font(theme::bold(26.0)));
         });
         ui.add_space(16.0);
         ui.horizontal(|ui| {

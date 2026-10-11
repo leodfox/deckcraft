@@ -1,4 +1,4 @@
-//! DeckCraft's egui frontend: a PowerPoint-style UI over `deckcraft-engine`.
+//! Ardoise Diapo's egui frontend: a PowerPoint-style UI over `deckcraft-engine`.
 //!
 //! The UI is thin: every action goes through [`SlideApp::run`], which handles UI commands
 //! (views, panes, zoom) here and sends everything else to the engine. The ribbon, menus,
@@ -150,7 +150,7 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
     ("show.start", "Slide Show", Some("F5"), "{from?: index}"),
     ("show.presenter", "Presenter View", None, "{on?: bool}"),
     ("show.end", "End Show", None, "{}"),
-    ("app.about", "About DeckCraft", None, "{}"),
+    ("app.about", "About Ardoise Diapo", None, "{}"),
     ("app.palette", "Command Palette", Some("Cmd+Shift+P"), "{}"),
     ("app.preferences", "Preferences…", Some("Cmd+,"), "{}"),
     ("app.openDialog", "Open…", None, "{purpose?}"),
@@ -498,7 +498,7 @@ impl SlideApp {
         } else if lower.ends_with(".txt") || lower.ends_with(".md") {
             "slide.fromOutline"
         } else {
-            self.set_status(format!("{name}: DeckCraft can't open this kind of file"));
+            self.set_status(format!("{name}: Ardoise Diapo can't open this kind of file"));
             return;
         };
         let p = if cmd == "slide.fromOutline" { json!({"text": String::from_utf8_lossy(bytes)}) } else { json!({"name": name, "data": data}) };
